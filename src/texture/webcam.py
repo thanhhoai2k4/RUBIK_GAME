@@ -6,15 +6,15 @@ from PIL import Image
 
 
 class WebcamBackground(Entity):
-    def __init__(self):
+    def __init__(self, width : int = 1280, height : int = 720, scale: tuple = (32,16), z: int = 40):
         super().__init__()
         self.parent = camera
         self.model = 'quad'
-        self.scale = (14, 6)
-        self.z = 20
+        self.scale = scale
+        self.z = z
         self.unlit = True
-        self.width = 1280
-        self.height = 720
+        self.width = width
+        self.height = height
         self.texture = Texture(
             Image.new(mode='RGBA', size=(self.width, self.height), color=(0, 0, 0, 255))
         )
@@ -34,6 +34,7 @@ class WebcamBackground(Entity):
                 frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
                 frame = cv2.resize(frame, (self.width, self.height))
                 frame = np.flipud(frame)  # Lật ảnh
+                frame = np.fliplr(frame)
                 frame = np.ascontiguousarray(frame)
                 # 3. CẬP NHẬT DỮ LIỆU VÀO TEXTURE CŨ (KHÔNG TẠO MỚI)
                 # Truy cập thẳng vào lõi Panda3D (_texture) để set dữ liệu RAM

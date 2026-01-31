@@ -7,6 +7,7 @@ if __name__=="__main__":
     window.title = title
     window.size = windowsize
     EditorCamera()
-    bg = WebcamBackground()
+    # element
+    bg = WebcamBackground(windowsize[0])
     rubik = RubikCube()
     app.run()
