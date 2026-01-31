@@ -1,0 +1,3 @@
+ursina
+ultralytic
+opencv-python
