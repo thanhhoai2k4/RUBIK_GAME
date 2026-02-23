@@ -6,12 +6,14 @@ from PIL import Image
 
 
 class WebcamBackground(Entity):
-    def __init__(self, width : int = 1280, height : int = 720, scale: tuple = (32,16), z: int = 40):
+    def __init__(self, width : int = 1280, height : int = 720, scale: tuple = (32,16), Coordinates: tuple[int, int, int] = (1,2,40) ):
         super().__init__()
-        self.parent = camera
+        self.parent = camera.ui
         self.model = 'quad'
         self.scale = scale
-        self.z = z
+        self.x = Coordinates[0]
+        self.y = Coordinates[1]
+        self.z = Coordinates[2]
         self.unlit = True
         self.width = width
         self.height = height
